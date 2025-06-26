@@ -2,8 +2,6 @@
 'use client';
 import { FC } from 'react';
 import { Code, Github, ExternalLink } from 'lucide-react';
-import Image from "next/image";
-
 
 interface ProjectCardProps {
   title: string;
