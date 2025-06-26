@@ -38,14 +38,14 @@ const skills: Skill[] = [
 
 
 const projects: Project[] = [
-{
-  title: "Web_Educativo_Next",
-  description: "Sitio educativo interactivo construido con Next.js que busca enseñar de forma clara y visual. Ideal para quienes desean aprender sin complicaciones: solo navega, explora y comprende cada concepto al instante. Todo está organizado para que cualquier persona —sin importar su nivel— pueda entenderlo con facilidad.",
-  technologies: ["Next.js", "TypeScript", "Tailwind", "GSAP"],
-  github: "https://github.com/SomiesProxs/Web_Educativo_Next",
-  demo: "https://registar.vercel.app/",
-  image: "https://registar.vercel.app/miniportada.jpg"
-}
+  {
+    title: "Web_Educativo_Next",
+    description: "Sitio educativo interactivo construido con Next.js que busca enseñar de forma clara y visual. Ideal para quienes desean aprender sin complicaciones: solo navega, explora y comprende cada concepto al instante. Todo está organizado para que cualquier persona —sin importar su nivel— pueda entenderlo con facilidad.",
+    technologies: ["Next.js", "TypeScript", "Tailwind", "GSAP"],
+    github: "https://github.com/SomiesProxs/Web_Educativo_Next",
+    demo: "https://web-educativo.vercel.app/",
+    image: "https://web-educativo.vercel.app/miniportada.jpg",
+  }
 ];
 
 

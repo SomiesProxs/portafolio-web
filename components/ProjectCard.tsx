@@ -19,7 +19,7 @@ const ProjectCard: FC<ProjectCardProps> = ({ title, description, technologies, i
     <div className="bg-gray-900 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-all duration-300 border border-[#A0753A]/20 hover:border-[#A0753A]/50">
         <div className="h-48 bg-gradient-to-br from-[#A0753A]/20 to-gray-800 flex items-center justify-center">
             {image ? (
-            <Image src={image} alt={title} className="w-full h-full object-cover" />
+            <img src={image} alt={title} className="w-full h-full object-cover" />
             ) : (
             <Code size={48} className="text-[#A0753A]" />
             )}
