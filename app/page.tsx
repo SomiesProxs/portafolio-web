@@ -1,6 +1,6 @@
 'use client'
-import React, { useState } from 'react';
-import { Github, Linkedin, Mail, Code, Database, Globe, Server, Smartphone, Menu, X, ExternalLink } from 'lucide-react';
+import React from 'react';
+import { Github, Linkedin, Mail, Code, Database, Globe, Server, Smartphone } from 'lucide-react';
 import ProjectCard from '@/components/ProjectCard';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
@@ -124,9 +124,6 @@ const projects: Project[] = [
               </div>
             </div>
 
-
-
-            
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-gray-900 p-6 rounded-lg border border-[#A0753A]/20">
                 <Globe className="text-[#A0753A] mb-4" size={32} />
@@ -226,7 +223,7 @@ const projects: Project[] = [
             </div>
           </div>
           <a 
-            href="mailto:tuemail@ejemplo.com"
+            href="mailto:1534209@senati.pe"
             className="inline-block px-8 py-3 bg-[#A0753A] text-white rounded-lg hover:bg-[#A0753A]/80 transition-colors font-semibold"
           >
             Envíame un Mensaje
