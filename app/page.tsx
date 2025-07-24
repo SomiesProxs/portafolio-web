@@ -402,7 +402,7 @@ const Portfolio: React.FC = () => {
       {/* Contact Section */}
       <section id="contacto" className="py-20 px-4 bg-gray-900/50 relative">
         <motion.div 
-          className="max-w-4xl mx-auto text-center"
+          className="max-w-3xl mx-auto text-center"
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
@@ -420,7 +420,7 @@ const Portfolio: React.FC = () => {
             ¿Tienes un proyecto en mente? Me encantaría escuchar tus ideas y ayudarte a hacerlas realidad.
           </motion.p>
           <motion.div 
-            className="grid md:grid-cols-4 gap-8 mb-12"
+            className="grid md:grid-cols-3 gap-8 mb-12"
             variants={staggerContainer}
           >
             {[
