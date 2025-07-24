@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react';
-import { Github, Linkedin, Mail, MessageCircle, Code, Database, Globe, Server, Smartphone } from 'lucide-react';
+import { Github, Linkedin, Mail, Code, Database, Globe, Server, Smartphone } from 'lucide-react';
 import { motion, useAnimation, Variants } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Particles from 'react-tsparticles';
@@ -9,7 +9,7 @@ import { Engine } from 'tsparticles-engine';
 import ProjectCard from '@/components/ProjectCard';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
-import Image from 'next/image';
+import Image from "next/image";
 
 // Interfaces
 interface Skill {
@@ -47,7 +47,6 @@ const TypewriterText: React.FC<{ text: string; delay?: number }> = ({ text, dela
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay, duration: 0.5 }}
-      aria-live="polite"
     >
       {displayText}
       <motion.span
@@ -70,15 +69,15 @@ const staggerContainer: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15,
+      staggerChildren: 0.2,
       delayChildren: 0.1
     }
   }
 };
 
 const scaleIn: Variants = {
-  hidden: { opacity: 0, scale: 0.9 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.4, ease: 'easeOut' } }
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: 'easeOut' } }
 };
 
 // Main Portfolio Component
@@ -96,61 +95,18 @@ const Portfolio: React.FC = () => {
 
   const projects: Project[] = [
     {
-      title: 'Web_Educativo_Next',
-      description: 'Sitio educativo interactivo construido con Next.js para enseñar conceptos de forma clara y visual. Organizado para usuarios de todos los niveles.',
-      technologies: ['Next.js', 'TypeScript', 'Tailwind', 'GSAP'],
-      github: 'https://github.com/SomiesProxs/Web_Educativo_Next',
-      demo: 'https://web-educativo.vercel.app/',
-      image: 'https://web-educativo.vercel.app/miniportada.jpg',
-    },
-    {
-      title: 'TaskManager',
-      description: 'Aplicación de gestión de tareas con autenticación de usuarios, CRUD en tiempo real y diseño responsivo. Ideal para equipos y productividad personal.',
-      technologies: ['React', 'Firebase', 'Tailwind', 'Node.js'],
-      github: 'https://github.com/SomiesProxs/TaskManager',
-      demo: 'https://taskmanager-demo.vercel.app/',
-      image: '/taskmanager.jpg',
-    },
-    {
-      title: 'E-Commerce Platform',
-      description: 'Plataforma de comercio electrónico con carrito de compras, pasarela de pagos y panel de administración. Optimizada para SEO y rendimiento.',
-      technologies: ['Next.js', 'Stripe', 'MongoDB', 'Vercel'],
-      github: 'https://github.com/SomiesProxs/ECommerce',
-      demo: 'https://ecommerce-demo.vercel.app/',
-      image: '/ecommerce.jpg',
+      title: "Web_Educativo_Next",
+      description: "Sitio educativo interactivo construido con Next.js que busca enseñar de forma clara y visual. Ideal para quienes desean aprender sin complicaciones: solo navega, explora y comprende cada concepto al instante. Todo está organizado para que cualquier persona —sin importar su nivel— pueda entenderlo con facilidad.",
+      technologies: ["Next.js", "TypeScript", "Tailwind", "GSAP"],
+      github: "https://github.com/SomiesProxs/Web_Educativo_Next",
+      demo: "https://web-educativo.vercel.app/",
+      image: "https://web-educativo.vercel.app/miniportada.jpg",
     }
-  ];
-
-  const contactItems = [
-    {
-      icon: <Mail />,
-      title: 'Email',
-      value: '1534209@senati.pe',
-      href: 'mailto:1534209@senati.pe',
-    },
-    {
-      icon: <Github />,
-      title: 'GitHub',
-      value: 'github.com/SomiesProxs',
-      href: 'https://github.com/SomiesProxs',
-    },
-    {
-      icon: <Linkedin />,
-      title: 'LinkedIn',
-      value: 'linkedin.com/in/misael-esteban-soria-jimenez-938a70348/',
-      href: 'https://linkedin.com/in/misael-esteban-soria-jimenez-938a70348/',
-    },
-    {
-      icon: <MessageCircle />,
-      title: 'WhatsApp',
-      value: '+51 949 871 410',
-      href: 'https://wa.me/51949871410?text=Hola,%20quiero%20contactarte%20por%20una%20colaboración.',
-    },
   ];
 
   // Animation Controls
   const controls = useAnimation();
-  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.1 });
+  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.2 });
 
   useEffect(() => {
     if (inView) {
@@ -165,35 +121,18 @@ const Portfolio: React.FC = () => {
     await loadSlim(engine);
   };
 
-  // WhatsApp Click Handler
-  const handleWhatsAppClick = () => {
-    window.open('https://wa.me/51949871410?text=Hola,%20quiero%20contactarte%20por%20una%20colaboración.', '_blank', 'noopener,noreferrer');
-  };
-
-  // Form State
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [formStatus, setFormStatus] = useState('');
-
-  const handleFormSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    // Aquí puedes integrar una API para enviar el formulario
-    setFormStatus('Mensaje enviado con éxito!');
-    setTimeout(() => setFormStatus(''), 3000);
-    setFormData({ name: '', email: '', message: '' });
-  };
-
   return (
-    <div className="bg-black text-white min-h-screen overflow-x-hidden relative font-sans">
+    <div className="bg-black text-white min-h-screen overflow-x-hidden relative">
       <Particles
         id="tsparticles"
         init={particlesInit}
         options={{
-          background: { color: { value: 'transparent' } },
+          background: { color: { value: "transparent" } },
           fpsLimit: 60,
           interactivity: {
             events: {
-              onHover: { enable: true, mode: 'repulse' },
-              onClick: { enable: true, mode: 'push' }
+              onHover: { enable: true, mode: "repulse" },
+              onClick: { enable: true, mode: "push" }
             },
             modes: {
               repulse: { distance: 100, duration: 0.4 },
@@ -201,19 +140,19 @@ const Portfolio: React.FC = () => {
             }
           },
           particles: {
-            color: { value: '#A0753A' },
-            links: { color: '#A0753A', distance: 150, enable: true, opacity: 0.3, width: 1 },
+            color: { value: "#A0753A" },
+            links: { color: "#A0753A", distance: 150, enable: true, opacity: 0.3, width: 1 },
             move: {
-              direction: 'none',
+              direction: "none",
               enable: true,
-              outModes: { default: 'bounce' },
+              outModes: { default: "bounce" },
               random: false,
-              speed: 1.5,
+              speed: 2,
               straight: false
             },
-            number: { density: { enable: true, area: 800 }, value: 60 },
+            number: { density: { enable: true, area: 800 }, value: 80 },
             opacity: { value: 0.3 },
-            shape: { type: 'circle' },
+            shape: { type: "circle" },
             size: { value: { min: 1, max: 3 } }
           },
           detectRetina: true
@@ -229,7 +168,6 @@ const Portfolio: React.FC = () => {
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
-          role="banner"
         >
           <motion.div 
             className="w-60 h-60 mx-auto mb-8 rounded-full overflow-hidden border-4 border-[#A0753A] shadow-2xl relative"
@@ -239,15 +177,13 @@ const Portfolio: React.FC = () => {
           >
             <Image
               src="/profile.jpg"
-              alt="Foto de perfil de Misael Soria"
+              alt="Mi foto de perfil"
               fill
-              priority
-              sizes="(max-width: 768px) 100vw, 300px"
               className="object-cover transform hover:scale-110 transition-transform duration-500"
             />
           </motion.div>
           <motion.h1 
-            className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4"
+            className="text-5xl md:text-7xl font-bold mb-4"
             variants={fadeInUp}
           >
             <span className="text-white">Hola, soy </span>
@@ -262,22 +198,21 @@ const Portfolio: React.FC = () => {
             </span>
           </motion.h1>
           <motion.p 
-            className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-8"
+            className="text-xl md:text-2xl text-gray-300 mb-8"
             variants={fadeInUp}
           >
             <TypewriterText text="Desarrollador Full Stack | Creador de Experiencias Digitales" delay={2.5} />
           </motion.p>
           <motion.div 
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col md:flex-row gap-4 justify-center"
             variants={staggerContainer}
           >
             <motion.button 
               variants={fadeInUp}
               onClick={() => document.getElementById('proyectos')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-8 py-3 bg-[#A0753A] text-white rounded-lg hover:bg-[#A0753A]/90 transition-colors font-semibold relative overflow-hidden"
-              whileHover={{ scale: 1.05 }}
+              className="px-8 py-3 bg-[#A0753A] text-white rounded-lg hover:bg-[#A0753A]/80 transition-colors font-semibold relative overflow-hidden"
+              whileHover={{ scale: 1.05, rotate: 2 }}
               whileTap={{ scale: 0.95 }}
-              aria-label="Ver mis proyectos"
             >
               <span className="relative z-10">Ver Mis Proyectos</span>
               <motion.span
@@ -291,9 +226,8 @@ const Portfolio: React.FC = () => {
               variants={fadeInUp}
               onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
               className="px-8 py-3 border-2 border-[#A0753A] text-[#A0753A] rounded-lg hover:bg-[#A0753A] hover:text-white transition-colors font-semibold"
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, rotate: -2 }}
               whileTap={{ scale: 0.95 }}
-              aria-label="Contáctame"
             >
               Contáctame
             </motion.button>
@@ -302,39 +236,39 @@ const Portfolio: React.FC = () => {
       </section>
 
       {/* About Section */}
-      <section id="sobre-mi" className="py-16 px-4 sm:px-6 relative">
+      <section id="sobre-mi" className="py-20 px-4 relative">
         <motion.div 
           className="max-w-6xl mx-auto"
           ref={ref}
           initial="hidden"
           animate={controls}
           variants={staggerContainer}
-          style={{ background: 'rgba(0, 0, 0, 0.3)', transform: 'translateZ(0)' }}
+          style={{ background: 'rgba(0, 0, 0, 0.2)', transform: 'translateZ(0)' }}
         >
           <motion.h2 
-            className="text-3xl sm:text-4xl font-bold text-center mb-12"
+            className="text-4xl font-bold text-center mb-12"
             variants={fadeInUp}
           >
             <span className="text-[#A0753A]">Sobre</span> Mí
           </motion.h2>
-          <div className="grid md:grid-cols-2 gap-8 items-start">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div variants={fadeInUp}>
-              <p className="text-base sm:text-lg text-gray-200 mb-6">
-                Soy estudiante de 5to semestre en Desarrollo de Software en SENATI, con experiencia como practicante especializado en desarrollo front-end y conocimientos sólidos en back-end.
+              <p className="text-lg text-gray-300 mb-6">
+                Soy estudiante de 5to semestre en Desarrollo de Software en SENATI, con experiencia como practicante especializado en desarrollo front-end y conocimientos en back-end.
               </p>
-              <p className="text-base sm:text-lg text-gray-200 mb-6">
-                Me especializo en crear interfaces modernas y responsivas usando React, Next.js y Tailwind CSS, integrando APIs y desarrollando funcionalidades del lado del servidor con Laravel. También tengo experiencia en automatización y análisis de datos con Python.
+              <p className="text-lg text-gray-300 mb-6">
+                Me especializo en crear interfaces modernas y responsivas usando React, Next.js y Tailwind CSS, integrando APIs y desarrollando funcionalidades del lado del servidor con Laravel. Además, tengo experiencia en automatización y análisis de datos con Python.
               </p>
-              <p className="text-base sm:text-lg text-gray-200 mb-6">
+              <p className="text-lg text-gray-300 mb-6">
                 Me destaco por mi proactividad, capacidad de aprendizaje rápido, dedicación y facilidad para trabajar en equipo.
               </p>
               <motion.div 
-                className="flex flex-wrap gap-6 sm:gap-8 justify-center"
+                className="flex gap-8"
                 variants={staggerContainer}
               >
                 {[
                   { value: '1+', label: 'Años de Experiencia' },
-                  { value: '3+', label: 'Proyectos Completados' },
+                  { value: '1+', label: 'Proyectos Completados' },
                   { value: '8+', label: 'Tecnologías' }
                 ].map((stat, index) => (
                   <motion.div 
@@ -343,8 +277,8 @@ const Portfolio: React.FC = () => {
                     variants={scaleIn}
                     whileHover={{ scale: 1.1 }}
                   >
-                    <div className="text-xl sm:text-2xl font-bold text-[#A0753A]">{stat.value}</div>
-                    <div className="text-gray-300 text-sm sm:text-base">{stat.label}</div>
+                    <div className="text-2xl font-bold text-[#A0753A]">{stat.value}</div>
+                    <div className="text-gray-400">{stat.label}</div>
                   </motion.div>
                 ))}
               </motion.div>
@@ -356,24 +290,25 @@ const Portfolio: React.FC = () => {
               {[
                 { icon: <Globe />, title: 'Frontend', desc: 'Interfaces modernas, accesibles y responsivas' },
                 { icon: <Server />, title: 'Backend', desc: 'APIs sólidas y escalables con enfoque en rendimiento' },
-                { icon: <Database />, title: 'Base de Datos', desc: 'Modelado y gestión eficiente de datos' },
-                { icon: <Smartphone />, title: 'Figma', desc: 'Diseño de interfaces y prototipos interactivos' }
+                { icon: <Database />, title: 'Base de Datos', desc: 'Modelado y gestión eficiente de datos relacionales y no relacionales' },
+                { icon: <Smartphone />, title: 'Figma', desc: 'Diseño de interfaces atractivas, prototipos interactivos y flujo de usuario' }
               ].map((item, index) => (
                 <motion.div
                   key={index}
-                  className="bg-gray-900 p-4 sm:p-6 rounded-lg border border-[#A0753A]/20 hover:border-[#A0753A]/50 transition-all duration-300"
+                  className="bg-gray-900 p-6 rounded-lg border border-[#A0753A]/20 hover:border-[#A0753A]/50 transition-all duration-300"
                   variants={scaleIn}
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.05, rotate: 3 }}
+                  transition={{ duration: 0.3 }}
                 >
                   <motion.div 
-                    className="text-[#A0753A] mb-4 w-8 h-8"
+                    className="text-[#A0753A] mb-4"
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.5 }}
                   >
                     {item.icon}
                   </motion.div>
-                  <h3 className="font-semibold text-base sm:text-lg mb-2">{item.title}</h3>
-                  <p className="text-gray-300 text-sm">{item.desc}</p>
+                  <h3 className="font-semibold mb-2">{item.title}</h3>
+                  <p className="text-gray-400 text-sm">{item.desc}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -382,7 +317,7 @@ const Portfolio: React.FC = () => {
       </section>
 
       {/* Skills Section */}
-      <section id="habilidades" className="py-16 px-4 sm:px-6 bg-gray-900/50 relative">
+      <section id="habilidades" className="py-20 px-4 bg-gray-900/50 relative">
         <motion.div 
           className="max-w-6xl mx-auto"
           initial="hidden"
@@ -390,45 +325,42 @@ const Portfolio: React.FC = () => {
           variants={staggerContainer}
         >
           <motion.h2 
-            className="text-3xl sm:text-4xl font-bold text-center mb-12"
+            className="text-4xl font-bold text-center mb-12"
             variants={fadeInUp}
           >
             <span className="text-[#A0753A]">Mis</span> Habilidades
           </motion.h2>
           <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
             variants={staggerContainer}
           >
             {skills.map((skill: Skill, index: number) => (
               <motion.div 
                 key={index}
-                className="bg-gray-900 p-4 sm:p-6 rounded-lg border border-[#A0753A]/20 hover:border-[#A0753A]/50 transition-all duration-300"
+                className="bg-gray-900 p-6 rounded-lg border border-[#A0753A]/20 hover:border-[#A0753A]/50 transition-all duration-300"
                 variants={scaleIn}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, rotate: 2 }}
+                transition={{ duration: 0.3 }}
               >
                 <div className="flex items-center mb-4">
                   <motion.div 
-                    className="text-[#A0753A] mr-3 w-6 h-6"
+                    className="text-[#A0753A] mr-3"
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.5 }}
                   >
                     {skill.icon}
                   </motion.div>
-                  <h3 className="font-semibold text-base sm:text-lg">{skill.name}</h3>
+                  <h3 className="font-semibold text-lg">{skill.name}</h3>
                 </div>
-                <div className="w-full bg-gray-700 rounded-full h-2.5 mb-2">
+                <div className="w-full bg-gray-700 rounded-full h-2 mb-2">
                   <motion.div 
-                    className="bg-[#A0753A] h-2.5 rounded-full"
+                    className="bg-[#A0753A] h-2 rounded-full"
                     initial={{ width: 0 }}
                     animate={{ width: `${skill.level}%` }}
-                    transition={{ duration: 1.2, ease: 'easeOut' }}
-                    role="progressbar"
-                    aria-valuenow={skill.level}
-                    aria-valuemin={0}
-                    aria-valuemax={100}
+                    transition={{ duration: 1.5, ease: 'easeOut' }}
                   />
                 </div>
-                <div className="text-sm text-gray-300">{skill.level}% Competencia</div>
+                <div className="text-sm text-gray-400">{skill.level}% Competencia</div>
               </motion.div>
             ))}
           </motion.div>
@@ -436,7 +368,7 @@ const Portfolio: React.FC = () => {
       </section>
 
       {/* Projects Section */}
-      <section id="proyectos" className="py-16 px-4 sm:px-6 relative">
+      <section id="proyectos" className="py-20 px-4 relative">
         <motion.div 
           className="max-w-6xl mx-auto"
           initial="hidden"
@@ -444,20 +376,20 @@ const Portfolio: React.FC = () => {
           variants={staggerContainer}
         >
           <motion.h2 
-            className="text-3xl sm:text-4xl font-bold text-center mb-12"
+            className="text-4xl font-bold text-center mb-12"
             variants={fadeInUp}
           >
             <span className="text-[#A0753A]">Mis</span> Proyectos
           </motion.h2>
           <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
             variants={staggerContainer}
           >
             {projects.map((project: Project, index: number) => (
               <motion.div
                 key={index}
                 variants={scaleIn}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, rotate: 1 }}
                 transition={{ duration: 0.3 }}
               >
                 <ProjectCard {...project} />
@@ -468,7 +400,7 @@ const Portfolio: React.FC = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contacto" className="py-16 px-4 sm:px-6 bg-gray-900/50 relative">
+      <section id="contacto" className="py-20 px-4 bg-gray-900/50 relative">
         <motion.div 
           className="max-w-4xl mx-auto text-center"
           initial="hidden"
@@ -476,59 +408,82 @@ const Portfolio: React.FC = () => {
           variants={staggerContainer}
         >
           <motion.h2 
-            className="text-3xl sm:text-4xl font-bold mb-8"
+            className="text-4xl font-bold mb-8"
             variants={fadeInUp}
           >
             <span className="text-[#A0753A]">Trabajemos</span> Juntos
           </motion.h2>
           <motion.p 
-            className="text-base sm:text-lg text-gray-200 mb-12"
+            className="text-xl text-gray-300 mb-12"
             variants={fadeInUp}
           >
             ¿Tienes un proyecto en mente? Me encantaría escuchar tus ideas y ayudarte a hacerlas realidad.
           </motion.p>
           <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-12"
+            className="grid md:grid-cols-4 gap-8 mb-12"
             variants={staggerContainer}
           >
-            {contactItems.map((contact, index) => (
-              <motion.div
-                key={index}
-                className="bg-gray-900 p-4 sm:p-6 rounded-lg border border-[#A0753A]/20 hover:border-[#A0753A]/50 transition-all duration-300"
-                variants={scaleIn}
-                whileHover={{ scale: 1.05 }}
-                onClick={contact.title === 'WhatsApp' ? handleWhatsAppClick : undefined}
-              >
-                <motion.div
-                  className="text-[#A0753A] mx-auto mb-4 w-8 h-8"
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  {contact.icon}
-                </motion.div>
-                <h3 className="font-semibold mb-2 text-base sm:text-lg">{contact.title}</h3>
-                {contact.title === 'WhatsApp' ? (
-                  <span 
-                    className="text-gray-300 hover:text-[#A0753A] transition-colors cursor-pointer"
-                    role="link"
-                    aria-label="Contactar por WhatsApp"
-                  >
-                    {contact.value}
-                  </span>
-                ) : (
-                  <a
-                    href={contact.href}
-                    className="text-gray-300 hover:text-[#A0753A] transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Contactar por ${contact.title}`}
-                  >
-                    {contact.value}
-                  </a>
-                )}
-              </motion.div>
-            ))}
+            {[
+        {
+          icon: <Mail />,
+          title: 'Email',
+          value: '1534209@senati.pe',
+          href: 'mailto:1534209@senati.pe',
+        },
+        {
+          icon: <Github />,
+          title: 'GitHub',
+          value: 'github.com/SomiesProxs',
+          href: 'https://github.com/SomiesProxs',
+        },
+        {
+          icon: <Linkedin />,
+          title: 'LinkedIn',
+          value: 'linkedin.com/in/misael-esteban-soria-jimenez-938a70348/',
+          href: 'https://linkedin.com/in/misael-esteban-soria-jimenez-938a70348/',
+        },
+      ].map((contact, index) => (
+        <motion.div
+          key={index}
+          className="bg-gray-900 p-6 rounded-lg border border-[#A0753A]/20 hover:border-[#A0753A]/50 transition-all duration-300"
+          variants={scaleIn}
+          whileHover={{ scale: 1.05, rotate: 3 }}
+          transition={{ duration: 0.3 }}
+        >
+          <motion.div
+            className="text-[#A0753A] mx-auto mb-4"
+            whileHover={{ rotate: 360 }}
+            transition={{ duration: 0.5 }}
+          >
+            {contact.icon}
           </motion.div>
+          <h3 className="font-semibold mb-2">{contact.title}</h3>
+          <a
+            href={contact.href}
+            className="text-gray-400 hover:text-[#A0753A] transition-colors"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {contact.value}
+          </a>
+        </motion.div>
+      ))}
+          </motion.div>
+          <motion.a 
+            href="mailto:1534209@senati.pe"
+            className="inline-block px-8 py-3 bg-[#A0753A] text-white rounded-lg hover:bg-[#A0753A]/80 transition-colors font-semibold relative overflow-hidden"
+            variants={fadeInUp}
+            whileHover={{ scale: 1.05, rotate: 2 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <span className="relative z-10">Envíame un Mensaje</span>
+            <motion.span
+              className="absolute inset-0 bg-[#A0753A]/50"
+              initial={{ scale: 0, opacity: 0 }}
+              whileHover={{ scale: 2, opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            />
+          </motion.a>
         </motion.div>
       </section>
 

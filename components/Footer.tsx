@@ -36,15 +36,6 @@ const Footer: React.FC = () => {
           >
             <Mail size={24} />
           </a>
-          <a
-            href="https://wa.me/1234567890?text=Buenas%20tardes%2C%20me%20pongo%20en%20contacto%20porque%20estoy%20interesado%20en%20explorar%20una%20posible%20colaboraci%C3%B3n%20con%20usted%20para%20unirse%20a%20nuestro%20equipo."
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="WhatsApp"
-            className="text-gray-400 hover:text-[#A0753A] transition-colors"
-          >
-            <MessageCircle size={24} />
-          </a>
         </div>
         <p className="text-gray-400">
           © {new Date().getFullYear()} Mi Portfolio. Hecho con React y mucho
