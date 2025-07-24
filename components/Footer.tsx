@@ -2,7 +2,7 @@
 
 'use client';
 
-import { Github, Linkedin, Mail, MessageCircle } from 'lucide-react';
+import { Github, Linkedin, Mail} from 'lucide-react';
 import React from 'react';
 
 // Footer Component
